@@ -1,5 +1,9 @@
 import pandas as pd
 from timeit_decorator import timeit_decorator
+import os
+import time
+
+start_time = time.time()
 
 @timeit_decorator
 def ler_dataframe_csv(file):
@@ -55,3 +59,8 @@ def cidades_de_alto_impacto(dados_covid_cidades, dados_populacao):
 resultado = cidades_de_alto_impacto(dados_covid_cidades, dados_populacao)
 
 salvar_dataframe_csv(resultado, 'output/cidades_de_alto_impacto.csv')
+
+end_time = time.time()
+execution_time = end_time - start_time
+
+print(f"Tempo de execução {execution_time:.4f} em segundos para o arquivo: {os.path.basename(__file__)}")
